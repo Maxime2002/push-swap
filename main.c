@@ -5,28 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlangloi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 19:00:06 by mlangloi          #+#    #+#             */
-/*   Updated: 2023/05/02 18:26:07 by mlangloi         ###   ########.fr       */
+/*   Created: 2023/05/05 20:33:05 by mlangloi          #+#    #+#             */
+/*   Updated: 2023/05/05 20:33:07 by mlangloi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include "push_swap.h"
 
-int main ()
+int	main(int argc, char **argv)
 {
-	t_list lia;
-	t_list lib;
+	t_list	*list_a;
+	t_list	*list_b;
 
-	lia = new_list();
-	lib = new_list();
-	lia = push_front(lia, 1);
-	lia = push_front(lia, 2);
-	lia = push_front(lia, 6);
-	//lia = push_front(lia, 4);
-	
-	print_list(lia);
-	push_swap(&lia, &lib);
-	print_list(lia);
-	
-	return 0;
+	list_a = NULL;
+	list_b = NULL;
+	if (argc < 2)
+		return (0);
+	else if (argc == 2)
+	{
+		ft_if_is_two_args(argc, argv, &list_a);
+		ft_sort(&list_a, &list_b);
+	}
+	else
+	{
+		while (--argc >= 1)
+			list_a = ft_add_elem(list_a, ft_atoi(argv[argc], list_a));
+		ft_error(list_a, list_b, ft_is_double(list_a), "Error\n");
+		ft_sort(&list_a, &list_b);
+	}
+	ft_free_list(list_a, NULL);
+	return (0);
 }

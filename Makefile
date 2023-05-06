@@ -5,48 +5,60 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mlangloi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/04/27 19:08:47 by mlangloi          #+#    #+#              #
-#    Updated: 2023/04/28 01:01:37 by mlangloi         ###   ########.fr        #
+#    Created: 2023/05/05 20:33:12 by mlangloi          #+#    #+#              #
+#    Updated: 2023/05/06 17:43:35 by mlangloi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap.a
+NAME = push_swap
+NAME2 = checker
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-AR = ar rcs
-RM = rm -f
+CC		= gcc
+FLAGS = -Wall -Wextra -Werror
 
-SRCS = instructions.c \
-	ft_putstr.c \
+SRCS = push.c \
+	reverse_rotate.c \
+	rotate.c \
+	ft_split.c \
+	swap.c \
+	func_libft.c \
+	logic.c \
 	lst.c \
-	push_swap.c \
+	lst2.c \
+	main.c \
+	algo.c \
+	check.c \
 
-OBJS =  ${SRCS:.c=.o}
+SRCS2 = checker.c \
+	checker2.c \
+	checker3.c \
+	checker4.c \
+	get_next_line.c \
+	get_next_line_utils.c \
 
-.c.o:
-		        $(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
-$(NAME): ${OBJS}
-		$(AR) $(NAME) ${OBJS}
+OBJS2 = $(SRCS2:.c=.o)
 
-all:    ${NAME}
+all: $(NAME)
+
+%.o: %.c
+	$(CC) $(FLAGS) -o $@ -c $<
+
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) -o $(NAME) $(OBJS)
+
+$(NAME2): $(OBJS2)
+	$(CC) $(FLAGS) -o $(NAME2) $(OBJS2)
 
 clean:
-		${RM} ${OBJS}
+	rm -f $(OBJS)
+	rm -f $(OBJS2)
 
 fclean: clean
-		rm -f ${NAME}
+	rm -f $(NAME)
+	rm -f $(NAME2)
 
-re:     fclean all
+re: fclean all
 
-bonus : ${OBJS}
-		${AR} ${NAME} ${OBJS}
-
-.PHONY: all clean fclean re
-
-
-
-
-
-
+.PHONY:	all clean fclean re norm

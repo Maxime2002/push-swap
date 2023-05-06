@@ -1,140 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst.c                                              :+:      :+:    :+:   */
+/*   elem.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlangloi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 21:14:19 by mlangloi          #+#    #+#             */
-/*   Updated: 2023/04/28 00:06:31 by mlangloi         ###   ########.fr       */
+/*   Created: 2023/05/05 20:33:18 by mlangloi          #+#    #+#             */
+/*   Updated: 2023/05/05 20:33:20 by mlangloi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include "push_swap.h"
 
-void	*new_list(void)
+t_list	*ft_add_elem(t_list *elem, int val)
 {
-	return (NULL);
-}
+	t_list	*tmp;
 
-int	is_empty(t_list list)
-{
-	if(!list)
-		return(0);
-	return (1);
-}
-
-int	list_len(t_list list)
-{
-	int len;
-
-	len = 0;
-	if (!is_empty(list) == 0)
+	tmp = malloc(sizeof(t_list));
+	if (tmp)
 	{
-		while (list)
+		tmp->value = val;
+		tmp->next = elem;
+	}
+	return (tmp);
+}
+
+void	ft_fill_index(t_list **list_a)
+{
+	t_list	*first;
+	t_list	*cp_a;
+	int		i;
+
+	first = *list_a;
+	cp_a = *list_a;
+	while (*list_a)
+	{
+		cp_a = first;
+		i = 0;
+		while (cp_a)
 		{
-			++len;
-			list = list->next;
+			if ((*list_a)->value > cp_a->value)
+				i++;
+			if ((*list_a)->index != i)
+				(*list_a)->index = i;
+			if (!cp_a->next)
+				break ;
+			cp_a = cp_a->next;
 		}
+		*list_a = (*list_a)->next;
 	}
-	return (len);
-}
-
-void	print_list(t_list list)
-{
-	if (is_empty(list) == 0)
-	{
-		printf("liste vide\n");
-		return ;
-	}
-	while (list)
-	{
-		printf("%d\n", list->nb);
-		list = list->next;
-	}
-}
-
-t_list	push_back(t_list list, int x)
-{
-	listE *elem;
-	listE *temp;
-
-	elem = malloc(sizeof(*elem));
-	if (elem == NULL)
-		return (NULL);
-	elem->nb = x;
-	elem->next = NULL;
-	if (is_empty(list) == 0)
-		return elem;
-	temp = list;
-	while (temp->next)
-		temp = temp->next;
-	temp->next = elem;
-	return (list);
-}
-
-t_list push_front(t_list list, int x)
-{
-	listE *elem;
-
-	elem = malloc(sizeof(*elem));
-	if (elem == NULL)
-		return (NULL);
-	elem->nb = x;
-	if (is_empty(list) == 0)
-		elem->next = NULL;
-	else
-		elem->next = list;
-	return (elem);
-}
-
-t_list	del_back(t_list list)
-{
-	listE *temp;
-	listE *before;
-
-	if (is_empty(list) == 0)
-		return new_list();
-	if (list->next == NULL)
-	{
-		free(list);
-		list = NULL;
-		return (new_list());
-	}
-	temp = list;
-	before = list;
-	while(temp->next)
-	{
-		before = temp;
-		temp = temp->next;
-	}
-	before->next = NULL;
-	free(temp);
-	temp = NULL;
-	return (list);
-}
-
-t_list del_front(t_list list)
-{
-	listE *elem;
-
-	elem = malloc(sizeof(*elem));
-	if (elem == NULL)
-		return (NULL);
-	if (is_empty(list) == 0)
-		return (new_list());
-	elem = list->next;
-	free(list);
-	list = NULL;
-	return elem;
-
-}
-
-t_list	clear_list(t_list list)
-{
-	if (is_empty(list) == 0)
-		return (new_list());
-	while (list)
-		list = del_front(list);
-	return (list);
+	*list_a = first;
 }
