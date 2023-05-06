@@ -6,7 +6,7 @@
 /*   By: mlangloi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:47:16 by mlangloi          #+#    #+#             */
-/*   Updated: 2023/05/05 22:49:39 by mlangloi         ###   ########.fr       */
+/*   Updated: 2023/05/06 19:06:02 by mlangloi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,11 @@ t_list	*ft_add_elem(t_list *elem, int val)
 	tmp = malloc(sizeof(t_list));
 	if (tmp)
 	{
-		tmp->value = val;
+		tmp->nb = val;
 		tmp->next = elem;
 	}
 	return (tmp);
 }
-
-
-
 
 void	ft_error(t_list *list_a, t_list *list_b, int res, char *error)
 {

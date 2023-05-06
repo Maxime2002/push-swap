@@ -19,7 +19,7 @@ t_list	*ft_add_elem(t_list *elem, int val)
 	tmp = malloc(sizeof(t_list));
 	if (tmp)
 	{
-		tmp->value = val;
+		tmp->nb = val;
 		tmp->next = elem;
 	}
 	return (tmp);
@@ -39,7 +39,7 @@ void	ft_fill_index(t_list **list_a)
 		i = 0;
 		while (cp_a)
 		{
-			if ((*list_a)->value > cp_a->value)
+			if ((*list_a)->nb > cp_a->nb)
 				i++;
 			if ((*list_a)->index != i)
 				(*list_a)->index = i;

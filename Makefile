@@ -6,7 +6,7 @@
 #    By: mlangloi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/05 20:33:12 by mlangloi          #+#    #+#              #
-#    Updated: 2023/05/06 17:43:35 by mlangloi         ###   ########.fr        #
+#    Updated: 2023/05/06 19:20:41 by mlangloi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCS2 = checker.c \
 	checker2.c \
 	checker3.c \
 	checker4.c \
+	checker5.c \
 	get_next_line.c \
 	get_next_line_utils.c \
 

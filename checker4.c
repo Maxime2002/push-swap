@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker4.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlangloi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/06 19:07:31 by mlangloi          #+#    #+#             */
+/*   Updated: 2023/05/06 19:07:34 by mlangloi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "checker.h"
 
@@ -13,7 +23,7 @@ int	check_finish(t_list *list_a)
 			tmp = (list_a)->next;
 			while (tmp)
 			{
-				if ((list_a)->value > tmp->value)
+				if ((list_a)->nb > tmp->nb)
 					return (-1);
 				tmp = tmp->next;
 			}
@@ -36,7 +46,7 @@ int	ft_is_double(t_list *elem)
 			tmp = elem->next;
 			while (tmp)
 			{
-				if (elem->value == tmp->value)
+				if (elem->nb == tmp->nb)
 					return (-1);
 				tmp = tmp->next;
 			}

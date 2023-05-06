@@ -55,7 +55,7 @@ void	ft_sort(t_list **list_a, t_list **list_b)
 		cp_a = cp_a->next;
 		nb_elem++;
 	}
-	if (nb_elem == 2 && (*list_a)->value > (*list_a)->next->value)
+	if (nb_elem == 2 && (*list_a)->nb > (*list_a)->next->nb)
 		swap("sa\n", list_a);
 	else if (nb_elem == 3)
 		if_len_3(list_a);

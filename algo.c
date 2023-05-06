@@ -21,20 +21,20 @@ void	if_len_3(t_list **list_a)
 	f = *list_a;
 	s = f->next;
 	t = s->next;
-	if (f->value < s->value && s->value < t->value && s->value < t->value)
+	if (f->nb < s->nb && s->nb < t->nb && s->nb < t->nb)
 		return ;
-	else if (f->value < s->value && f->value < t->value && s->value > t->value)
+	else if (f->nb < s->nb && f->nb < t->nb && s->nb > t->nb)
 	{
 		reverse_rotate("rra\n", list_a);
 		swap("sa\n", list_a);
 	}
-	else if (f->value > s->value && f->value < t->value && s->value < t->value)
+	else if (f->nb > s->nb && f->nb < t->nb && s->nb < t->nb)
 		swap("sa\n", list_a);
-	else if (f->value < s->value && f->value > t->value && s->value > t->value)
+	else if (f->nb < s->nb && f->nb > t->nb && s->nb > t->nb)
 		reverse_rotate("rra\n", list_a);
-	else if (f->value > s->value && f->value > t->value && s->value < t->value)
+	else if (f->nb > s->nb && f->nb > t->nb && s->nb < t->nb)
 		rotate("ra\n", list_a);
-	else if (f->value > s->value && f->value > t->value && s->value > t->value)
+	else if (f->nb > s->nb && f->nb > t->nb && s->nb > t->nb)
 	{
 		rotate("ra\n", list_a);
 		swap("sa\n", list_a);

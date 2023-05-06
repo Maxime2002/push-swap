@@ -6,7 +6,7 @@
 /*   By: mlangloi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:42:39 by mlangloi          #+#    #+#             */
-/*   Updated: 2023/05/05 22:44:56 by mlangloi         ###   ########.fr       */
+/*   Updated: 2023/05/06 19:34:48 by mlangloi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 typedef struct s_list
 {
-	int				value;
+	int				nb;
 	int				index;
 	struct s_list	*next;
 }	t_list;
@@ -31,10 +31,14 @@ char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
 int		ft_clean(char *str);
 
-int	execute_list(char *line, t_list **list_a, t_list **list_b);
+int		execute_list(char *line, t_list **list_a, t_list **list_b);
+int		execute_list2(char *line, t_list **list_a, t_list **list_b);
+int		execute_list3(char *line, t_list **list_a, t_list **list_b);
+int		execute_list4(char *line, t_list **list_a, t_list **list_b);
+int		ft_traitement(t_list *list_a, t_list *list_b);
 void	ft_result(t_list **list_a, t_list **list_b);
 
-int	ft_strcmp(char *s1, char *s2);
+int		ft_strcmp(char *s1, char *s2);
 void	pav2(t_list **list_a, t_list **list_b);
 void	pbv2(t_list **list_a, t_list **list_b);
 void	ft_putstr(char *s);
